@@ -14,7 +14,7 @@
 
 <!-- 基礎・実装・発展のどれか1つに取り組めば完了です。 -->
 
-- 取り組んだレベル：基礎 / 実装 / 発展
-- やったこと：
-- 結果：
-- 気づき・疑問：
+- 取り組んだレベル：基礎
+- やったこと：`app/mcp_server.py` に `server.tool()(tools.get_lecture_summary)` を1行追加し、既存の `get_lecture_summary(lecture: int)` をMCPツールとして公開した。
+- 結果：ツール一覧に `glossary_get_lecture_summary` が増え、引数スキーマは `lecture: integer`だった。「第2回では何を学びますか？」では `[tool call] glossary_get_lecture_summary({'lecture': 2})` が1回呼ばれ、要約が取得されて回答された（モデル応答2回）。
+- 気づき・疑問：エージェント側の設定やコードは変更せず、サーバー側への登録だけで一覧と呼び出しに反映された。MCPでは関数の型ヒントとdocstringがツールの説明・引数情報になるため、公開する関数の文書がモデルの利用判断に影響する。
